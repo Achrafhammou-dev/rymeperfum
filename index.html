@@ -1,0 +1,574 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>RYMEperfum — L'essence de l'élégance</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --navy: #0f1724;            /* deep blue (not black) */
+      --panel: rgba(255,255,255,0.03);
+      --gold: #c9a35a;           /* gold accent */
+      --gold-soft: rgba(201,163,90,0.12);
+      --muted: rgba(255,255,255,0.68);
+    }
+
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: radial-gradient(1200px 400px at 10% 10%, rgba(201,163,90,0.03), transparent 6%), var(--navy);
+      color: #e6eef6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+    h1,h2,h3{ font-family: "Playfair Display", serif; }
+
+    /* glass-like panels */
+    .glass {
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border: 1px solid rgba(255,255,255,0.04);
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(2,6,23,0.6);
+    }
+
+    /* small decorative line */
+    .line { height:2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+
+    /* subtle golden text */
+    .gold { color: var(--gold); }
+
+    /* hero specific */
+    .hero-foreground { position: relative; z-index: 10; }
+    .orb { position:absolute; filter: blur(34px); opacity:0.14; }
+
+    /* modal backdrop */
+    .overlay { background: rgba(2,6,23,0.7); backdrop-filter: blur(6px); }
+
+    /* focus */
+    .focus-ring:focus { outline: 2px solid rgba(201,163,90,0.18); outline-offset:4px; }
+
+    /* responsive tweak */
+    @media (min-width:1024px){ .container-lg{ max-width:1200px } }
+
+    /* small helper for images */
+    .img-cover { object-fit: cover; object-position: center; }
+
+    
+  </style>
+
+  <style>
+    /* ========================= */
+/* 🔹 RESPONSIVE ENHANCEMENTS */
+/* ========================= */
+
+/* ---------- Header ---------- */
+header nav {
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+header .container-lg {
+  width: 100%;
+}
+@media (max-width: 768px) {
+  header nav {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem 1.25rem;
+  }
+  header nav a, 
+  header nav button {
+    font-size: 0.9rem;
+  }
+  #logoBtn {
+    font-size: 1.25rem;
+  }
+  header span {
+    display: none; /* hide subtitle on small screens */
+  }
+}
+
+
+/* ---------- Product Popup ---------- */
+#productPopup .bg-white {
+  width: 95%;
+  max-width: 480px;
+  margin: 0 auto;
+}
+@media (max-width: 768px) {
+  #productPopup form {
+    font-size: 0.9rem;
+  }
+  #productPopup select,
+  #productPopup input {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+  #productPopup h3 {
+    font-size: 1.5rem;
+  }
+  #productPopup p {
+    font-size: 0.85rem;
+  }
+}
+@media (max-width: 480px) {
+  #productPopup .bg-white {
+    padding: 1.25rem;
+    border-radius: 1rem;
+  }
+  #closePopup {
+    top: 0.5rem;
+    right: 0.75rem;
+  }
+  #productPopup button[type="submit"] {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* ---------- General Enhancements ---------- */
+@media (max-width: 1024px) {
+  h1, h2 {
+    line-height: 1.3;
+  }
+}
+@media (max-width: 640px) {
+  .container-lg {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .glass {
+    border-radius: 10px;
+    padding: 1rem;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- audio (off) -->
+  <audio id="bgMusic" loop src="https://assets.mixkit.co/music/preview/mixkit-slow-piano-ballad-495.mp3"></audio>
+
+  <!-- NAV -->
+<header class="fixed top-4 left-0 right-0 z-50">
+  <div class="max-w-7xl mx-auto px-5">
+    <nav class="backdrop-blur-md bg-white/5 border border-white/10 px-5 py-3 rounded-2xl flex items-center justify-between shadow-lg">
+      
+      <!-- Logo + Tagline -->
+      <div class="flex items-center gap-3">
+        <button id="logoBtn" class="text-2xl md:text-3xl font-semibold text-white tracking-wide" href="index.html">
+          <span class="text-[#c8a85a]">RYME</span>perfum
+        </button>
+        <span class="hidden sm:block text-xs md:text-sm text-gray-300 italic">
+          L'essence d'un monde discret
+        </span>
+      </div>
+
+      <!-- Navigation -->
+      <div class="flex items-center gap-2 sm:gap-4">
+        <a href="#shop" class="text-xs sm:text-sm uppercase tracking-wide text-gray-300 hover:text-[#c8a85a] transition-all duration-200">
+          Boutique
+        </a>
+        <a href="#about" class="text-xs sm:text-sm uppercase tracking-wide text-gray-300 hover:text-[#c8a85a] transition-all duration-200">
+          À propos
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- 🌸 Luxury Hero Section -->
+<section class="relative bg-[url('img/banner.png')] bg-cover bg-center h-[100vh] flex items-end text-center text-white">
+  <!-- Dark overlay -->
+  <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/60 to-black/90"></div>
+
+  <!-- Content (moved lower) -->
+  <div class="relative z-10 w-full pb-24 md:pb-32 px-6">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-4xl md:text-6xl font-light mb-4 tracking-wide leading-tight">
+        Discover the Essence of Luxury
+      </h2>
+      <p class="text-base md:text-lg font-extralight mb-8 text-gray-200">
+        A fragrance that defines your elegance.
+      </p>
+      <button id="openPopup" class="bg-[#c8a85a] text-black px-10 py-3 rounded-full text-sm tracking-wider hover:bg-transparent hover:text-[#c8a85a] border border-[#c8a85a] transition-all duration-300">
+        Buy Now
+      </button>
+    </div>
+  </div>
+</section>
+
+  <main class="pt-28">
+
+    <!-- HERO -->
+    <section id="home" class="relative min-h-screen overflow-hidden">
+      <!-- decorative orbs -->
+      <div class="orb left-[-8%] top-6 w-72 h-72 bg-gradient-to-br from-[#2b3b4a] to-[#0f1724]" style="border-radius:50%; transform: rotate(12deg);"></div>
+      <div class="orb right-[-10%] top-36 w-96 h-96 bg-gradient-to-tr from-[#c9a35a] to-transparent" style="border-radius:50%; transform: rotate(-20deg);"></div>
+
+      <div class="hero-foreground container mx-auto px-6 container-lg py-24">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <!-- copy -->
+          <div class="max-w-xl">
+            <div class="uppercase text-sm tracking-widest text-gray-400">Nouvelle collection</div>
+            <h1 class="mt-4 text-4xl md:text-6xl font-bold leading-tight">RYMEperfum <span class="gold">•</span></h1>
+            <p class="mt-6 text-gray-300 text-lg">Un sillage qui évoque la mémoire d'un lieu lointain — matières nobles, résonance chaleureuse, élégance intemporelle.</p>
+
+            <div class="mt-8 flex gap-4">
+              <a href="#shop" class="inline-flex items-center px-6 py-3 bg-gradient-to-br from-[#0b1220] to-[#101826] border border-gray-700 text-white rounded-md shadow-lg transform hover:scale-[1.02] focus-ring">Découvrir la boutique</a>
+              <button id="previewBtn" class="px-6 py-3 border rounded-md text-sm text-gray-200 focus-ring">Voir le flacon</button>
+            </div>
+
+            <div class="mt-6 text-sm text-gray-400">Éditions limitées — flacons numérotés.</div>
+          </div>
+
+          <!-- visual -->
+          <div class="relative">
+            <div class="glass p-6 md:p-10">
+              <div class="relative md:flex md:items-center md:gap-8">
+                <div class="md:w-1/2">
+                  <!-- replace with your high-res asset -->
+                  <img id="bottle" src="img/téléchargement.jpg" alt="Flacon RYME" class="w-full h-80 md:h-96 rounded-xl shadow-2xl img-cover" />
+                  <div class="absolute left-6 bottom-6 px-3 py-1 rounded-full text-xs text-gray-200 bg-black/30">Edition 01 • 50ml</div>
+                </div>
+                <div class="md:w-1/2 mt-6 md:mt-0">
+                  <h3 class="text-2xl font-semibold">RYME Noir</h3>
+                  <p class="mt-3 text-gray-300">Un accord bois&eacute;-ambre, cuir velouté et épices nobles.</p>
+                  <div class="mt-6 flex items-center gap-4">
+                    <div class="text-2xl font-semibold">120€</div>
+                    <button id="buyBtn" class="px-5 py-2 rounded-md border bg-gradient-to-br from-[#0b1220] to-[#0f1724] text-white focus-ring">Acheter</button>
+                  </div>
+                  <div class="mt-3 text-sm text-gray-400">Livraison internationale • Retour 14 jours</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- floating note card -->
+            <div class="hidden lg:block absolute -right-8 top-8 w-48 glass p-4 transform -rotate-6">
+              <div class="text-sm text-gray-300">Note de tête</div>
+              <div class="mt-2 font-semibold">Bergamote & Poivre</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- thumbnails -->
+        <div class="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-6">
+          <div class="glass p-3">
+            <img src="img/Застывшие фото _ Bleu de Chanel.jpg" alt="" class="w-full h-28 rounded img-cover" />
+            <h4 class="mt-3 font-medium">Fleur d'Or</h4>
+            <div class="text-sm text-gray-400">95€</div>
+          </div>
+          <div class="glass p-3">
+            <img src="img/Foto Producto con IA.jpg" alt="" class="w-full h-28 rounded img-cover" />
+            <h4 class="mt-3 font-medium">Bois Secret</h4>
+            <div class="text-sm text-gray-400">110€</div>
+          </div>
+          <div class="glass p-3">
+            <img src="img/503062302_18353671492147847_7865410205981798880_n.jpg" alt="" class="w-full h-28 rounded img-cover" />
+            <h4 class="mt-3 font-medium">Citrus Lumière</h4>
+            <div class="text-sm text-gray-400">78€</div>
+          </div>
+          <div class="glass p-3">
+            <img src="img/18ab8307-052f-4622-8579-50b7263c6947.jpg" alt="" class="w-full h-28 rounded img-cover" />
+            <h4 class="mt-3 font-medium">Nocturne</h4>
+            <div class="text-sm text-gray-400">130€</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SHOP -->
+    <section id="shop" class="py-20">
+      <div class="container mx-auto px-6 container-lg">
+        <div class="flex items-center justify-between mb-8">
+          <div>
+            <h2 class="text-3xl font-bold">La Boutique</h2>
+            <p class="mt-2 text-gray-400">Sélection choisie — esthétique et personnalité.</p>
+          </div>
+          <div class="text-sm text-gray-400">Filtrer: <button class="px-3 py-1 border rounded">Nouveautés</button></div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- product 1 -->
+          <article class="glass p-6 product focus-ring" tabindex="0" data-id="1">
+            <div class="relative h-64 overflow-hidden rounded">
+              <img src="img/18ab8307-052f-4622-8579-50b7263c6947.jpg" alt="RYME Noir" class="w-full h-full img-cover" />
+            </div>
+            <h3 class="mt-4 text-xl font-semibold">RYME Noir</h3>
+            <p class="mt-2 text-gray-400 text-sm">Signature boisée, cuir et ambre.</p>
+            <div class="mt-4 flex items-center justify-between">
+              <div class="text-lg font-semibold">120€</div>
+              <button class="px-4 py-2 border rounded show-popup">Voir</button>
+            </div>
+          </article>
+
+          <!-- product 2 -->
+          <article class="glass p-6">
+            <div class="relative h-64 overflow-hidden rounded">
+              <img src="img/503062302_18353671492147847_7865410205981798880_n.jpg" alt="Fleur d'Or" class="w-full h-full img-cover" />
+            </div>
+            <h3 class="mt-4 text-xl font-semibold">Fleur d'Or</h3>
+            <p class="mt-2 text-gray-400 text-sm">Rose ambrée, soyeuse.</p>
+            <div class="mt-4 flex items-center justify-between">
+              <div class="text-lg font-semibold">95€</div>
+              <button class="px-4 py-2 border rounded">Voir</button>
+            </div>
+          </article>
+
+          <!-- product 3 -->
+          <article class="glass p-6">
+            <div class="relative h-64 overflow-hidden rounded">
+              <img src="img/Foto Producto con IA.jpg" alt="Citrus Lumiere" class="w-full h-full img-cover" />
+            </div>
+            <h3 class="mt-4 text-xl font-semibold">Citrus Lumière</h3>
+            <p class="mt-2 text-gray-400 text-sm">Zest & soie florale.</p>
+            <div class="mt-4 flex items-center justify-between">
+              <div class="text-lg font-semibold">78€</div>
+              <button class="px-4 py-2 border rounded">Voir</button>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="py-20">
+      <div class="container mx-auto px-6 container-lg">
+        <div class="grid md:grid-cols-2 gap-8 items-center">
+          <div>
+            <h2 class="text-3xl font-bold">La Maison RYME</h2>
+            <p class="mt-4 text-gray-300">Maître nez et designers s'unissent pour extraire l'essence la plus pure. Matières nobles, distillation artisanale, esthétisme minimaliste.</p>
+
+            <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="glass p-4">
+                <div class="font-semibold">Artisanat</div>
+                <div class="text-sm text-gray-400 mt-1">Distillation lente, flacons soufflés.</div>
+              </div>
+              <div class="glass p-4">
+                <div class="font-semibold">Durabilité</div>
+                <div class="text-sm text-gray-400 mt-1">Ingrédients sourcés de façon responsable.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass p-6">
+            <h3 class="text-xl font-semibold">Atelier & Collections</h3>
+            <p class="mt-3 text-gray-300">Éditions limitées, collaborations avec artistes et designers. Chaque flacon est pensé comme un objet.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- PRODUCT MODAL -->
+  <div id="productModal" class="fixed inset-0 hidden items-center justify-center z-50 overlay">
+    <div class="max-w-4xl w-full mx-4 lg:mx-0 p-6">
+      <div class="glass md:flex overflow-hidden rounded-2xl">
+        <div class="md:w-1/2 relative h-60 md:h-auto">
+          <img id="modalImg" src="img/Застывшие фото _ Bleu de Chanel.jpg" alt="Produit" class="w-full h-full img-cover" />
+        </div>
+        <div class="p-6 md:w-1/2">
+          <button id="closeModal" class="absolute right-8 top-8 text-gray-300">✕</button>
+          <h3 id="modalTitle" class="text-2xl font-bold">Produit</h3>
+          <p id="modalDesc" class="mt-4 text-gray-300">Description du produit.</p>
+          <div class="mt-6 flex items-center gap-6">
+            <div id="modalPrice" class="text-2xl font-semibold">120€</div>
+            <button id="modalBuy" class="px-5 py-2 rounded-md border bg-gradient-to-br from-[#0b1220] to-[#0f1724] text-white">Ajouter au panier</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="mt-20 py-10">
+    <div class="container mx-auto px-6 text-center text-gray-400">© RYMEperfum — Tous droits réservés</div>
+  </footer>
+
+
+
+  <!-- 🛍 Product Purchase Popup -->
+<div id="productPopup" class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50">
+  <div class="bg-white rounded-2xl w-[90%] max-w-md p-6 relative text-gray-800">
+    <button id="closePopup" class="absolute top-3 right-3 text-gray-500 hover:text-black text-xl">&times;</button>
+    <h3 class="text-2xl font-semibold mb-2 text-center">Buy RYMEperfum</h3>
+    <p class="text-center text-gray-500 mb-6">Choose your fragrance and place your order</p>
+
+    <form class="space-y-4">
+      <div>
+        <label class="block text-sm font-medium mb-1">Select perfume</label>
+        <select class="w-full border border-gray-300 rounded-lg p-2">
+          <option>RYMEperfum - Rose Velvet</option>
+          <option>RYMEperfum - Oud Elegance</option>
+          <option>RYMEperfum - Amber Noir</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium mb-1">Quantity</label>
+        <input type="number" class="w-full border border-gray-300 rounded-lg p-2" min="1" value="1">
+      </div>
+
+      <button type="submit" class="w-full bg-black text-white py-2 rounded-lg hover:bg-gray-800 transition-all duration-300">
+        Confirm Purchase
+      </button>
+    </form>
+  </div>
+</div>
+
+<script>
+  const openPopup = document.getElementById('openPopup');
+  const closePopup = document.getElementById('closePopup');
+  const popup = document.getElementById('productPopup');
+
+  openPopup.addEventListener('click', () => {
+    popup.classList.remove('hidden');
+    popup.classList.add('flex');
+  });
+
+  closePopup.addEventListener('click', () => {
+    popup.classList.add('hidden');
+  });
+
+  popup.addEventListener('click', (e) => {
+    if (e.target === popup) popup.classList.add('hidden');
+  });
+</script>
+
+
+<script>
+  gsap.from(".relative.z-10", {
+    opacity: 0,
+    y: 40,
+    duration: 1.2,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: ".relative.z-10",
+      start: "top 80%"
+    }
+  });
+</script>
+
+  <script>
+    // ---------- Simple SPA-ish navigation (hash)
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', (e)=>{
+        e.preventDefault();
+        const href = a.getAttribute('href');
+        if(href && href.startsWith('#')) {
+          const el = document.querySelector(href);
+          if(el) el.scrollIntoView({behavior:'smooth', block:'center'});
+        }
+      });
+    });
+
+    // ---------- GSAP: entrance animations
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.from('.logo', {y:-8, opacity:0, duration:0.8, delay:0.2});
+    gsap.from('h1,h2,h3', {y:20, opacity:0, duration:0.9, stagger:0.06, ease:'power3.out'});
+
+    gsap.utils.toArray('.glass').forEach((el,i)=>{
+      gsap.from(el, {
+        y: 30, opacity: 0, duration: 0.8, delay: 0.12 + i*0.04, ease:'power3.out',
+        scrollTrigger: { trigger: el, start: 'top 80%' }
+      });
+    });
+
+    // ---------- Bottle micro-parallax on pointer
+    const bottle = document.getElementById('bottle');
+    document.addEventListener('pointermove', (e)=>{
+      const cx = window.innerWidth/2, cy = window.innerHeight/2;
+      const dx = (e.clientX - cx) / cx;
+      const dy = (e.clientY - cy) / cy;
+      if(bottle) gsap.to(bottle, {rotationY: dx * 6, rotationX: -dy * 6, transformPerspective:900, duration: 0.7, ease:'power2.out'});
+    });
+
+    // ---------- Product modal logic
+    const modal = document.getElementById('productModal');
+    const modalImg = document.getElementById('modalImg');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDesc = document.getElementById('modalDesc');
+    const modalPrice = document.getElementById('modalPrice');
+    const closeModalBtn = document.getElementById('closeModal');
+
+    document.querySelectorAll('.show-popup').forEach(btn=>{
+      btn.addEventListener('click', (e)=>{
+        const card = e.target.closest('article');
+        const img = card.querySelector('img')?.src || '';
+        const title = card.querySelector('h3')?.innerText || 'Produit';
+        const desc = card.querySelector('p')?.innerText || '';
+        const price = card.querySelector('.text-lg')?.innerText || card.querySelector('.text-2xl')?.innerText || '—';
+
+        if(img) modalImg.src = img;
+        modalTitle.innerText = title;
+        modalDesc.innerText = desc;
+        modalPrice.innerText = price;
+
+        modal.classList.remove('hidden');
+        gsap.fromTo(modal, {autoAlpha:0},{autoAlpha:1, duration:0.4});
+        gsap.from('#productModal .glass', {y:18, scale:0.99, opacity:0, duration:0.55});
+      });
+    });
+
+    function closeModal(){
+      gsap.to(modal, {autoAlpha:0, duration:0.35, onComplete: ()=> modal.classList.add('hidden')});
+    }
+    closeModalBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e)=> { if(e.target === modal) closeModal(); });
+    window.addEventListener('keydown', (e)=> { if(e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal(); });
+
+    // ---------- Buy button demo toast
+    document.getElementById('buyBtn')?.addEventListener('click', ()=>{
+      gsap.to('#buyBtn', {scale:0.98, duration:0.08, yoyo:true, repeat:1});
+      const t = document.createElement('div');
+      t.innerText = 'Ajouté au panier (exemple)';
+      t.className = 'fixed right-6 bottom-6 p-3 rounded bg-white/6 text-gray-100 shadow-lg';
+      document.body.appendChild(t);
+      gsap.fromTo(t, {y:20, autoAlpha:0}, {y:0, autoAlpha:1, duration:0.4});
+      setTimeout(()=> gsap.to(t, {y:20, autoAlpha:0, duration:0.5, onComplete: ()=> t.remove()}), 1500);
+    });
+
+    // ---------- Music toggle
+    const musicToggle = document.getElementById('musicToggle');
+    const bgMusic = document.getElementById('bgMusic');
+    let musicOn = false;
+    musicToggle?.addEventListener('click', ()=>{
+      musicOn = !musicOn;
+      if(musicOn){ bgMusic.volume = 0.18; bgMusic.play(); musicToggle.classList.add('gold'); musicToggle.textContent = 'Musique: ON' }
+      else { bgMusic.pause(); musicToggle.classList.remove('gold'); musicToggle.textContent = 'Musique' }
+    });
+
+    // ---------- Small interactions
+    document.querySelectorAll('button, a').forEach(el=>{
+      el.addEventListener('pointerenter', ()=> gsap.to(el, {scale:1.03, duration:0.12}));
+      el.addEventListener('pointerleave', ()=> gsap.to(el, {scale:1, duration:0.12}));
+    });
+
+    // ---------- Accessibility: focus styles for cards
+    document.addEventListener('focusin', (e)=>{
+      const c = e.target.closest('.glass');
+      if(c) c.style.outline = '1px solid rgba(201,163,90,0.12)';
+    });
+    document.addEventListener('focusout', (e)=>{
+      document.querySelectorAll('.glass').forEach(c => c.style.outline = '');
+    });
+  </script>
+
+  
+</body>
+</html>

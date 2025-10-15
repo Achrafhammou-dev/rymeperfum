@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - RymePerfum</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body class="bg-ryme-black text-ryme-beige font-body antialiased">
+
+    <header class="fixed top-0 left-0 w-full z-50 p-6 md:p-8 flex justify-between items-center bg-ryme-black/70 backdrop-blur-sm nav-item">
+        <a href="index.html" class="text-3xl font-display text-ryme-gold tracking-widest hover:text-white transition duration-300 logo">
+            RymePerfum
+        </a>
+        <nav>
+            <ul class="flex space-x-8 text-sm uppercase tracking-wider">
+                <li><a href="index.html" class="hover:text-ryme-gold transition duration-300 nav-item">Home</a></li>
+                <li><a href="shop.html" class="hover:text-ryme-gold transition duration-300 nav-item">Shop</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="pt-32 pb-24 px-6 lg:px-20 min-h-screen">
+        <h1 class="text-5xl md:text-7xl font-display text-center text-white mb-20 shop-title">
+            The Full Collection
+        </h1>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-7xl mx-auto product-grid">
+            
+            <div class="product-card cursor-pointer group relative overflow-hidden" 
+                 data-name="Noir Absolu"
+                 data-price="$240"
+                 data-desc="A deep, magnetic scent featuring notes of aged sandalwood, black vanilla bean, and a whisper of dark oud. Perfect for evening wear."
+                 data-notes="Top: Bergamot, Pink Pepper | Heart: Jasmine, Black Rose | Base: Sandalwood, Vanilla, Oud"
+                 data-image="https://images.unsplash.com/photo-1509749141052-19e917d47225?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1ODc1NTJ8MHwxfGFsbHwyfHxQZXJmdW1lJTIwYm90dGxlJTIwZ29sZCUyMGJsYWNrJTIwbHV4dXJ5fHww&ixlib=rb-4.0.3&q=80&w=600"
+                 onclick="openProductPopup(this)">
+                <img src="https://images.unsplash.com/photo-1509749141052-19e917d47225?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1ODc1NTJ8MHwxfGFsbHwyfHxQZXJmdW1lJTIwYm90dGxlJTIwZ29sZCUyMGJsYWNrJTIwbHV4dXJ5fHww&ixlib=rb-4.0.3&q=80&w=600" alt="Noir Absolu" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105">
+                <div class="product-overlay absolute inset-0 flex flex-col justify-end p-4 text-center">
+                    <h3 class="text-xl font-display text-ryme-gold">Noir Absolu</h3>
+                    <p class="text-white text-sm">$240</p>
+                </div>
+            </div>
+
+            <div class="product-card cursor-pointer group relative overflow-hidden" 
+                 data-name="Ivory Dream"
+                 data-price="$180"
+                 data-desc="A bright and airy floral scent that captures the essence of a sunlit garden, featuring white tea, iris, and fresh linen."
+                 data-notes="Top: White Tea, Lemon | Heart: Iris, Peony | Base: White Musk, Cashmere"
+                 data-image="https://images.unsplash.com/photo-1628174780287-24d35e12f66e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1ODc1NTJ8MHwxfGFsbHwzfHxQZXJmdW1lJTIwYm90dGxlJTIwd2hpdGUlMjBnb2xkJTIwZGVzaWdufHww&ixlib=rb-4.0.3&q=80&w=600"
+                 onclick="openProductPopup(this)">
+                <img src="https://images.unsplash.com/photo-1628174780287-24d35e12f66e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1ODc1NTJ8MHwxfGFsbHwzfHxQZXJmdW1lJTIwYm90dGxlJTIwd2hpdGUlMjBnb2xkJTIwZGVzaWdufHww&ixlib=rb-4.0.3&q=80&w=600" alt="Ivory Dream" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105">
+                <div class="product-overlay absolute inset-0 flex flex-col justify-end p-4 text-center">
+                    <h3 class="text-xl font-display text-ryme-gold">Ivory Dream</h3>
+                    <p class="text-white text-sm">$180</p>
+                </div>
+            </div>
+
+            <div class="product-card cursor-pointer group relative overflow-hidden" 
+                 data-name="Amber Haze"
+                 data-price="$210"
+                 data-desc="An enveloping, warm fragrance reminiscent of a crackling fire, with notes of dry wood, rich amber, and spiced cardamom."
+                 data-notes="Top: Cardamom, Clove | Heart: Tobacco Leaf, Tonka Bean | Base: Amber, Cedarwood, Vetiver"
+                 data-image="https://images.unsplash.com/photo-1596706013221-b0d367c05b82?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1ODc1NTJ8MHwxfGFsbHw0fHxQZXJmdW1lJTIwYm90dGxlJTIwd29vZCUyMGdvbGQlMjBhY2NlbnRzfHww&ixlib=rb-4.0.3&q=80&w=600"
+                 onclick="openProductPopup(this)">
+                <img src="https://images.unsplash.com/photo-1596706013221-b0d367c05b82?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1ODc1NTJ8MHwxfGFsbHw0fHxQZXJmdW1lJTIwYm90dGxlJTIwd29vZCUyMGdvbGQlMjBhY2NlbnRzfHww&ixlib=rb-4.0.3&q=80&w=600" alt="Amber Haze" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105">
+                <div class="product-overlay absolute inset-0 flex flex-col justify-end p-4 text-center">
+                    <h3 class="text-xl font-display text-ryme-gold">Amber Haze</h3>
+                    <p class="text-white text-sm">$210</p>
+                </div>
+            </div>
+            
+            <div class="product-card cursor-pointer group relative overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1550993510-fd9d6d3570c9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1ODc1NTJ8MHwxfGFsbHw1fHxQZXJmdW1lJTIwYm90dGxlJTIwbWluaW1hbGlzdCUyMGdvbGR8fDA&ixlib=rb-4.0.3&q=80&w=600" alt="Aqua Bloom" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105">
+                <div class="product-overlay absolute inset-0 flex flex-col justify-end p-4 text-center">
+                    <h3 class="text-xl font-display text-ryme-gold">Aqua Bloom</h3>
+                    <p class="text-white text-sm">$170</p>
+                </div>
+            </div>
+            <div class="product-card cursor-pointer group relative overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1596706013221-b0d367c05b82?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1ODc1NTJ8MHwxfGFsbHw0fHxQZXJmdW1lJTIwYm90dGxlJTIwd29vZCUyMGdvbGQlMjBhY2NlbnRzfHww&ixlib=rb-4.0.3&q=80&w=600" alt="Mystic Wood" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105">
+                <div class="product-overlay absolute inset-0 flex flex-col justify-end p-4 text-center">
+                    <h3 class="text-xl font-display text-ryme-gold">Mystic Wood</h3>
+                    <p class="text-white text-sm">$230</p>
+                </div>
+            </div>
+            <div class="product-card cursor-pointer group relative overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1628174780287-24d35e12f66e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1ODc1NTJ8MHwxfGFsbHwzfHxQZXJmdW1lJTIwYm90dGxlJTIwd2hpdGUlMjBnb2xkJTIwZGVzaWdufHww&ixlib=rb-4.0.3&q=80&w=600" alt="Rose Petal" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105">
+                <div class="product-overlay absolute inset-0 flex flex-col justify-end p-4 text-center">
+                    <h3 class="text-xl font-display text-ryme-gold">Rose Petal</h3>
+                    <p class="text-white text-sm">$190</p>
+                </div>
+            </div>
+            <div class="product-card cursor-pointer group relative overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1594922119106-2581be4d115e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1ODc1NTJ8MHwxfGFsbHwxfHxQcmVtaXVtJTIwcGVyZnVtZSUyMGJvdHRsZSUyMHdpdGglMjBnb2xkJTIwYWNjZW50cyUyMG9uJTIwYmxhY2slMjBhbmQlMjBncmF5JTIwc2lsayUyMGJhY2tncm91bmR8fDA&ixlib=rb-4.0.3&q=80&w=600" alt="Ocean Breeze" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105">
+                <div class="product-overlay absolute inset-0 flex flex-col justify-end p-4 text-center">
+                    <h3 class="text-xl font-display text-ryme-gold">Ocean Breeze</h3>
+                    <p class="text-white text-sm">$175</p>
+                </div>
+            </div>
+            <div class="product-card cursor-pointer group relative overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1509749141052-19e917d47225?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1ODc1NTJ8MHwxfGFsbHwyfHxQZXJmdW1lJTIwYm90dGxlJTIwZ29sZCUyMGJsYWNrJTIwbHV4dXJ5fHww&ixlib=rb-4.0.3&q=80&w=600" alt="Crimson Dew" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105">
+                <div class="product-overlay absolute inset-0 flex flex-col justify-end p-4 text-center">
+                    <h3 class="text-xl font-display text-ryme-gold">Crimson Dew</h3>
+                    <p class="text-white text-sm">$220</p>
+                </div>
+            </div>
+            <div class="product-card cursor-pointer group relative overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1550993510-fd9d6d3570c9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1ODc1NTJ8MHwxfGFsbHw1fHxQZXJmdW1lJTIwYm90dGxlJTIwbWluaW1hbGlzdCUyMGdvbGR8fDA&ixlib=rb-4.0.3&q=80&w=600" alt="Eternity" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105">
+                <div class="product-overlay absolute inset-0 flex flex-col justify-end p-4 text-center">
+                    <h3 class="text-xl font-display text-ryme-gold">Eternity</h3>
+                    <p class="text-white text-sm">$250</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="p-8 text-center text-xs opacity-50">
+        &copy; 2025 RymePerfum. All Rights Reserved. | Elegance is a state of mind.
+    </footer>
+
+    <div id="product-popup" class="fixed inset-0 bg-ryme-black/95 backdrop-blur-sm z-50 flex justify-center items-center opacity-0 pointer-events-none transition duration-500">
+        <div class="bg-ryme-black text-ryme-beige max-w-4xl w-11/12 md:w-3/4 lg:w-2/3 h-5/6 rounded-lg shadow-2xl p-6 md:p-10 relative overflow-y-auto transform scale-95 transition duration-500">
+            <button onclick="closeProductPopup()" class="absolute top-4 right-4 text-2xl text-ryme-gold hover:text-white transition duration-300">
+                &times;
+            </button>
+            
+            <div class="grid md:grid-cols-2 gap-8 popup-content">
+                <div class="image-container">
+                    <img id="popup-image" src="" alt="Product Image" class="w-full h-96 object-cover rounded shadow-lg transform translate-y-4 opacity-0 transition-all duration-700 ease-out">
+                </div>
+
+                <div class="info-container flex flex-col justify-center">
+                    <h2 id="popup-name" class="text-5xl font-display text-ryme-gold mb-2 opacity-0 transform translate-x-4 transition-all duration-700 ease-out">
+                        Product Name
+                    </h2>
+                    <p id="popup-price" class="text-2xl font-body text-white mb-6 opacity-0 transform translate-x-4 transition-all duration-700 delay-100 ease-out">
+                        $000
+                    </p>
+                    
+                    <h3 class="text-lg font-display text-ryme-gold mt-4 mb-2 opacity-0 transform translate-x-4 transition-all duration-700 delay-200 ease-out">
+                        Description
+                    </h3>
+                    <p id="popup-desc" class="text-sm mb-6 opacity-0 transform translate-x-4 transition-all duration-700 delay-300 ease-out">
+                        Product description goes here.
+                    </p>
+
+                    <h3 class="text-lg font-display text-ryme-gold mt-4 mb-2 opacity-0 transform translate-x-4 transition-all duration-700 delay-400 ease-out">
+                        Fragrance Notes
+                    </h3>
+                    <p id="popup-notes" class="text-sm mb-8 opacity-0 transform translate-x-4 transition-all duration-700 delay-500 ease-out">
+                        Top: ... | Heart: ... | Base: ...
+                    </p>
+
+                    <button class="px-10 py-4 uppercase tracking-widest text-sm font-medium btn-gold-outline w-full max-w-xs transition-opacity duration-700 delay-600 opacity-0 buy-btn">
+                        Add to Vanity (Buy)
+                    </button>
+                    <p class="text-xs text-center mt-2 opacity-50 buy-btn-text">
+                        *This is a fictional button for demonstration purposes.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Ensure GSAP animations for the shop page run
+        document.addEventListener('DOMContentLoaded', () => {
+            initShopPageAnimations();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom font imports (assuming you'd link them in the HTML head in a real project) */
+/* For this example, we'll rely on the font-family placeholders in tailwind.config.js */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #121212; /* ryme-black */
+    color: #F5F5DC; /* ryme-beige for body text */
+    font-family: 'body', sans-serif;
+    overflow-x: hidden; /* Prevent horizontal scroll from animations */
+}
+
+/* Custom class for the gold gradient button hover effect */
+.btn-gold-outline {
+    border: 1px solid #D4AF37;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-gold-outline:hover {
+    background-color: #D4AF37; /* ryme-gold */
+    color: #121212;
+}
+
+/* Custom overlay style for product cards */
+.product-overlay {
+    background: linear-gradient(to top, rgba(18, 18, 18, 0.9) 0%, rgba(18, 18, 18, 0) 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.product-card:hover .product-overlay {
+    opacity: 1;
+}
