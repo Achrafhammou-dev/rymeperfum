@@ -1,39 +1,135 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+    :root{
+      --navy: #0f1724;            /* deep blue (not black) */
+      --panel: rgba(255,255,255,0.03);
+      --gold: #c9a35a;           /* gold accent */
+      --gold-soft: rgba(201,163,90,0.12);
+      --muted: rgba(255,255,255,0.68);
+    }
 
-/* Custom font imports (assuming you'd link them in the HTML head in a real project) */
-/* For this example, we'll rely on the font-family placeholders in tailwind.config.js */
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: radial-gradient(1200px 400px at 10% 10%, rgba(201,163,90,0.03), transparent 6%), var(--navy);
+      color: #e6eef6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+    h1,h2,h3{ font-family: "Playfair Display", serif; }
 
-html {
-    scroll-behavior: smooth;
+    /* glass-like panels */
+    .glass {
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border: 1px solid rgba(255,255,255,0.04);
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(2,6,23,0.6);
+    }
+
+    /* small decorative line */
+    .line { height:2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+
+    /* subtle golden text */
+    .gold { color: var(--gold); }
+
+    /* hero specific */
+    .hero-foreground { position: relative; z-index: 10; }
+    .orb { position:absolute; filter: blur(34px); opacity:0.14; }
+
+    /* modal backdrop */
+    .overlay { background: rgba(2,6,23,0.7); backdrop-filter: blur(6px); }
+
+    /* focus */
+    .focus-ring:focus { outline: 2px solid rgba(201,163,90,0.18); outline-offset:4px; }
+
+    /* responsive tweak */
+    @media (min-width:1024px){ .container-lg{ max-width:1200px } }
+
+    /* small helper for images */
+    .img-cover { object-fit: cover; object-position: center; }
+
+
+    /* ========================= */
+/* 🔹 RESPONSIVE ENHANCEMENTS */
+/* ========================= */
+
+/* ---------- Header ---------- */
+header nav {
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+header .container-lg {
+  width: 100%;
+}
+@media (max-width: 768px) {
+  header nav {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem 1.25rem;
+  }
+  header nav a, 
+  header nav button {
+    font-size: 0.9rem;
+  }
+  #logoBtn {
+    font-size: 1.25rem;
+  }
+  header span {
+    display: none; /* hide subtitle on small screens */
+  }
 }
 
-body {
-    background-color: #121212; /* ryme-black */
-    color: #F5F5DC; /* ryme-beige for body text */
-    font-family: 'body', sans-serif;
-    overflow-x: hidden; /* Prevent horizontal scroll from animations */
+
+/* ---------- Product Popup ---------- */
+#productPopup .bg-white {
+  width: 95%;
+  max-width: 480px;
+  margin: 0 auto;
+}
+@media (max-width: 768px) {
+  #productPopup form {
+    font-size: 0.9rem;
+  }
+  #productPopup select,
+  #productPopup input {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+  #productPopup h3 {
+    font-size: 1.5rem;
+  }
+  #productPopup p {
+    font-size: 0.85rem;
+  }
+}
+@media (max-width: 480px) {
+  #productPopup .bg-white {
+    padding: 1.25rem;
+    border-radius: 1rem;
+  }
+  #closePopup {
+    top: 0.5rem;
+    right: 0.75rem;
+  }
+  #productPopup button[type="submit"] {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
 }
 
-/* Custom class for the gold gradient button hover effect */
-.btn-gold-outline {
-    border: 1px solid #D4AF37;
-    transition: all 0.3s ease-in-out;
+/* ---------- General Enhancements ---------- */
+@media (max-width: 1024px) {
+  h1, h2 {
+    line-height: 1.3;
+  }
+}
+@media (max-width: 640px) {
+  .container-lg {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .glass {
+    border-radius: 10px;
+    padding: 1rem;
+  }
 }
 
-.btn-gold-outline:hover {
-    background-color: #D4AF37; /* ryme-gold */
-    color: #121212;
-}
-
-/* Custom overlay style for product cards */
-.product-overlay {
-    background: linear-gradient(to top, rgba(18, 18, 18, 0.9) 0%, rgba(18, 18, 18, 0) 100%);
-    opacity: 0;
-    transition: opacity 0.4s ease-in-out;
-}
-
-.product-card:hover .product-overlay {
-    opacity: 1;
-}

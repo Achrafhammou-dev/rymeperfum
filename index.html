@@ -154,6 +154,39 @@ header .container-lg {
   }
 }
 
+
+/* New styles for the composition section */
+.composition-notes {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Optional: make it even darker to contrast the light elements */
+    background: var(--navy); 
+    overflow: hidden;
+}
+
+.note-card {
+    /* Base style for the note cards */
+    opacity: 0; 
+    transform: translateY(30px);
+    transition: all 0.5s ease-out; /* fallback */
+    position: absolute; /* Allows them to stack in the center */
+    width: 300px;
+    padding: 2.5rem;
+    text-align: center;
+    background: rgba(255,255,255,0.08); /* slightly brighter glass */
+    border: 2px solid var(--gold-soft);
+}
+
+.note-title {
+    font-size: 3rem; 
+    line-height: 1;
+    color: var(--gold);
+    text-shadow: 0 0 12px var(--gold-soft);
+}
   </style>
 </head>
 <body>
@@ -190,12 +223,12 @@ header .container-lg {
 </header>
 
 <!-- 🌸 Luxury Hero Section -->
-<section class="relative bg-[url('img/banner.png')] bg-cover bg-center h-[100vh] flex items-end text-center text-white">
+<section class="relative bg-[url('img/rmprfm.png')] bg-cover bg-center h-[100vh] flex items-end text-center text-white">
   <!-- Dark overlay -->
   <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/60 to-black/90"></div>
 
   <!-- Content (moved lower) -->
-  <div class="relative z-10 w-full pb-24 md:pb-32 px-6">
+  <div class="relative z-10 w-full pb-24 md:pb-32 px-6" style="padding-bottom :4rem;">
     <div class="max-w-3xl mx-auto">
       <h2 class="text-4xl md:text-6xl font-light mb-4 tracking-wide leading-tight">
         Discover the Essence of Luxury
@@ -203,15 +236,16 @@ header .container-lg {
       <p class="text-base md:text-lg font-extralight mb-8 text-gray-200">
         A fragrance that defines your elegance.
       </p>
-      <button id="openPopup" class="bg-[#c8a85a] text-black px-10 py-3 rounded-full text-sm tracking-wider hover:bg-transparent hover:text-[#c8a85a] border border-[#c8a85a] transition-all duration-300">
-        Buy Now
-      </button>
+<a href="#shop" class="bg-[#c8a85a] text-black px-10 py-3 rounded-full text-sm tracking-wider hover:bg-transparent hover:text-[#c8a85a] border border-[#c8a85a] transition-all duration-300 inline-block">
+  Buy Now
+</a>
+
     </div>
   </div>
 </section>
+<main class="pt-28">
 
-  <main class="pt-28">
-
+  
     <!-- HERO -->
     <section id="home" class="relative min-h-screen overflow-hidden">
       <!-- decorative orbs -->
@@ -262,34 +296,269 @@ header .container-lg {
             </div>
           </div>
         </div>
+</section>
 
-        <!-- thumbnails -->
-        <div class="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-6">
-          <div class="glass p-3">
-            <img src="img/Застывшие фото _ Bleu de Chanel.jpg" alt="" class="w-full h-28 rounded img-cover" />
-            <h4 class="mt-3 font-medium">Fleur d'Or</h4>
-            <div class="text-sm text-gray-400">95€</div>
-          </div>
-          <div class="glass p-3">
-            <img src="img/Foto Producto con IA.jpg" alt="" class="w-full h-28 rounded img-cover" />
-            <h4 class="mt-3 font-medium">Bois Secret</h4>
-            <div class="text-sm text-gray-400">110€</div>
-          </div>
-          <div class="glass p-3">
-            <img src="img/503062302_18353671492147847_7865410205981798880_n.jpg" alt="" class="w-full h-28 rounded img-cover" />
-            <h4 class="mt-3 font-medium">Citrus Lumière</h4>
-            <div class="text-sm text-gray-400">78€</div>
-          </div>
-          <div class="glass p-3">
-            <img src="img/18ab8307-052f-4622-8579-50b7263c6947.jpg" alt="" class="w-full h-28 rounded img-cover" />
-            <h4 class="mt-3 font-medium">Nocturne</h4>
-            <div class="text-sm text-gray-400">130€</div>
-          </div>
+
+<!-- Thumbnails Carousel -->
+<section class="relative w-full overflow-hidden mt-12">
+  <div id="carousel" class="flex transition-transform ease-linear gap-[4mm]">
+    <!-- Slides duplicated before and after for infinite loop -->
+    <div class="carousel-item flex-none w-[85%] sm:w-1/3">
+      <div class="glass rounded-xl overflow-hidden shadow-lg">
+        <img src="img/503062302_18353671492147847_7865410205981798880_n.jpg" class="w-full h-72 object-cover" />
+        <div class="p-4 text-center">
+          <h4 class="mt-2 font-semibold text-lg">Citrus Lumière</h4>
+          <div class="text-sm text-gray-400">78€</div>
         </div>
+      </div>
+    </div>
+
+    <div class="carousel-item flex-none w-[85%] sm:w-1/3">
+      <div class="glass rounded-xl overflow-hidden shadow-lg">
+        <img src="img/18ab8307-052f-4622-8579-50b7263c6947.jpg" class="w-full h-72 object-cover" />
+        <div class="p-4 text-center">
+          <h4 class="mt-2 font-semibold text-lg">Nocturne</h4>
+          <div class="text-sm text-gray-400">130€</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="carousel-item flex-none w-[85%] sm:w-1/3">
+      <div class="glass rounded-xl overflow-hidden shadow-lg">
+        <img src="img/Застывшие фото _ Bleu de Chanel.jpg" class="w-full h-72 object-cover" />
+        <div class="p-4 text-center">
+          <h4 class="mt-2 font-semibold text-lg">Fleur d'Or</h4>
+          <div class="text-sm text-gray-400">95€</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="carousel-item flex-none w-[85%] sm:w-1/3">
+      <div class="glass rounded-xl overflow-hidden shadow-lg">
+        <img src="img/Foto Producto con IA.jpg" class="w-full h-72 object-cover" />
+        <div class="p-4 text-center">
+          <h4 class="mt-2 font-semibold text-lg">Bois Secret</h4>
+          <div class="text-sm text-gray-400">110€</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="carousel-item flex-none w-[85%] sm:w-1/3">
+      <div class="glass rounded-xl overflow-hidden shadow-lg">
+        <img src="img/503062302_18353671492147847_7865410205981798880_n.jpg" class="w-full h-72 object-cover" />
+        <div class="p-4 text-center">
+          <h4 class="mt-2 font-semibold text-lg">Citrus Lumière</h4>
+          <div class="text-sm text-gray-400">78€</div>
+        </div>
+      </div>
+    </div>
+        <div class="carousel-item flex-none w-[85%] sm:w-1/3">
+      <div class="glass rounded-xl overflow-hidden shadow-lg">
+        <img src="img/69599f60-4fa4-4495-b27b-81b01052f796.jpg" class="w-full h-72 object-cover" />
+        <div class="p-4 text-center">
+          <h4 class="mt-2 font-semibold text-lg">Citrus Lumière</h4>
+          <div class="text-sm text-gray-400">78€</div>
+        </div>
+      </div>
+    </div>
+        <div class="carousel-item flex-none w-[85%] sm:w-1/3">
+      <div class="glass rounded-xl overflow-hidden shadow-lg">
+        <img src="img/Застывшие фото _ Bleu de Chanel.jpg" class="w-full h-72 object-cover" />
+        <div class="p-4 text-center">
+          <h4 class="mt-2 font-semibold text-lg">Citrus Lumière</h4>
+          <div class="text-sm text-gray-400">78€</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- duplicated first again for infinite loop -->
+    <div class="carousel-item flex-none w-[85%] sm:w-1/3">
+      <div class="glass rounded-xl overflow-hidden shadow-lg">
+        <img src="img/18ab8307-052f-4622-8579-50b7263c6947.jpg" class="w-full h-72 object-cover" />
+        <div class="p-4 text-center">
+          <h4 class="mt-2 font-semibold text-lg">Nocturne</h4>
+          <div class="text-sm text-gray-400">130€</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const carousel = document.getElementById('carousel');
+  const items = document.querySelectorAll('.carousel-item');
+  const totalItems = items.length; // 8 items in total (4 unique + 4 duplicates)
+  const uniqueItems = 4; // Number of unique slides
+
+  // The 'real' slides are from index 1 to 4 (5 items in HTML, but we start at 1 due to the first duplicate)
+  // Indices: [0: DupeEnd], [1: Slide1], [2: Slide2], [3: Slide3], [4: Slide4], [5: DupeStart], [6: Dupe1], [7: Dupe2]
+  // The structure is: [Last-Dupe], [Real Slides], [First-Dupe, Second-Dupe, ...]
+
+  // Given your HTML structure, the 'real' slides are from index 1 to 4.
+  // The first slide *before* the real ones is a duplicate of the last real slide (index 0).
+  // The slides *after* the real ones (index 5 onwards) are duplicates of the first real slides.
+  
+  // Let's re-examine your HTML:
+  /*
+    [0] Citrus Lumière (Dupe 1) <-- Duplicated before the main set
+    [1] Nocturne (Real 1)
+    [2] Fleur d'Or (Real 2)
+    [3] Bois Secret (Real 3)
+    [4] Citrus Lumière (Real 4) // This is the 4th unique slide
+    
+    [5] Citrus Lumière (Dupe 2)
+    [6] Citrus Lumière (Dupe 3)
+    [7] Nocturne (Dupe 4)
+  */
+  // The real unique set is indices 1, 2, 3, 4. (4 unique slides)
+  // The duplicates before: [0]
+  // The duplicates after: [5], [6], [7]
+
+  // For a perfect loop with your current structure, you need:
+  // [Last Item], [Real Items], [First Item]
+  // Your current HTML:
+  // [0] Citrus Lumière (Dupe of Real 4) <-- OK, but let's assume Real 4 is the last *unique* slide
+  // [1] Nocturne (Real 1)
+  // [2] Fleur d'Or (Real 2)
+  // [3] Bois Secret (Real 3)
+  // [4] Citrus Lumière (Real 4)
+  // [5] Citrus Lumière (Dupe of Real 4)
+  // [6] Citrus Lumière (Dupe of ???)
+  // [7] Nocturne (Dupe of Real 1)
+  
+  // Since your HTML has more duplicates than needed and one seems mis-ordered, I will assume the core unique slides are 4, and we need duplicates for a clean loop.
+  // We need to move from index 4 to index 1 (the snap).
+
+  let index = 1; // Start at the first 'real' slide (Nocturne)
+  let animating = false;
+  const transitionDuration = 700; // Match CSS transition time
+
+  function updateCarousel(animate = true) {
+    const isMobile = window.innerWidth < 640;
+    // itemWidth: 85% for mobile, 33.333% for desktop
+    const itemWidth = isMobile ? 85 : 33.333;
+    const gap = 0.4; // ~4mm as percentage
+    
+    // The centerOffset is crucial for the mobile view (85% width) to center the active slide
+    // Total space per item: 85% width + 4mm gap (~0.4% approx) = 85.4%
+    // To center the slide, the left edge needs to start at (100% - 85%) / 2 = 7.5%
+    const centerOffset = isMobile ? 7.5 : 0; 
+
+    carousel.style.transition = animate ? `transform ${transitionDuration}ms ease-in-out` : 'none';
+    // Calculate the total percentage to move:
+    // index * (slide width + gap) - centerOffset for mobile centering
+    carousel.style.transform = `translateX(calc(-${index * (itemWidth + gap)}% + ${centerOffset}%))`;
+
+    // Highlight active: Check if the index is within the 'real' unique range for highlighting
+    // The real unique range is from index 1 to 4 in your HTML
+    items.forEach((item, i) => {
+        // Only highlight items within the visual viewport, not the snapped/duplicate ones
+        if (i === index) {
+            item.classList.add('scale-105', 'z-10');
+        } else {
+            item.classList.remove('scale-105', 'z-10');
+        }
+    });
+  }
+
+  function moveNext() {
+    if (animating) return;
+    animating = true;
+    index++;
+    updateCarousel(true);
+
+    // Check if we hit the 'first' duplicate after the real slides (index 5 is the first duplicate 'Citrus Lumière')
+    if (index >= 5) {
+      setTimeout(() => {
+        // Snap back to the first real slide (index 1: Nocturne) instantly
+        index = 1;
+        updateCarousel(false);
+        animating = false;
+      }, transitionDuration); // Wait for the animation to finish before snapping
+    } else {
+      setTimeout(() => (animating = false), transitionDuration);
+    }
+  }
+
+  // A movePrev function for completeness (needed for a true infinite loop if swiping)
+  function movePrev() {
+    if (animating) return;
+    animating = true;
+    index--;
+    updateCarousel(true);
+
+    // Check if we hit the 'last' duplicate before the real slides (index 0)
+    if (index < 1) {
+      setTimeout(() => {
+        // Snap back to the last real slide (index 4: Citrus Lumière) instantly
+        index = 4;
+        updateCarousel(false);
+        animating = false;
+      }, transitionDuration);
+    } else {
+      setTimeout(() => (animating = false), transitionDuration);
+    }
+  }
+
+  // Auto-play interval
+  setInterval(moveNext, 2000); 
+
+  // Handle resizing
+  window.addEventListener('resize', () => updateCarousel(false));
+  
+  // Initial setup
+  updateCarousel(false);
+</script>
+
+
 
       </div>
     </section>
+<style>
+  /* ✅ Smooth section transitions without covering content */
+section {
+  position: relative;
+  z-index: 0; /* make sure pseudo-elements stay behind content */
+}
 
+/* fade at bottom */
+section::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 120px;
+  background: linear-gradient(to bottom, transparent, var(--navy));
+  pointer-events: none;
+  z-index: -1; /* sit behind content */
+}
+
+/* fade at top (to previous section) */
+section + section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(to top, transparent, var(--navy));
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Optional custom transitions per color theme */
+section.bg-black::after,
+section.bg-black + section::before {
+  background: linear-gradient(to bottom, transparent, #000);
+}
+
+section.bg-white::after,
+section.bg-white + section::before {
+  background: linear-gradient(to bottom, transparent, #fff);
+}
+
+</style>
     <!-- SHOP -->
     <section id="shop" class="py-20">
       <div class="container mx-auto px-6 container-lg">
@@ -345,6 +614,41 @@ header .container-lg {
       </div>
     </section>
 
+
+<!-- 🎬 Brand Video Background Section -->
+<section
+  style="position: relative; box-shadow: 0 -20px 30px rgba(0, 0, 0, 0.2), 0 20px 30px rgba(0, 0, 0, 0.2); background-color:#0f1724;"
+  class="relative h-[160vh] flex items-center justify-center text-center overflow-hidden">
+
+  <!-- Background video -->
+  <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover">
+    <source src="img/relancevid.mp4" type="video/mp4" />
+  </video>
+
+  <!-- Smooth top gradient transition -->
+  <div class="absolute top-0 left-0 w-full h-1/3 bg-gradient-to-b from-[#0f1724] via-[#0f1724]/80 to-transparent z-[5]"></div>
+
+  <!-- Dark overlay for readability -->
+  <div class="absolute inset-0 bg-black/30 z-[6]"></div>
+
+  <!-- Text content -->
+  <div class="relative z-10 max-w-2xl px-6 text-white">
+    <h2 class="text-3xl md:text-4xl font-semibold mb-4 tracking-wide">L’univers RYME</h2>
+    <p class="text-sm md:text-base leading-relaxed text-gray-200">
+      Découvrez l’histoire et la passion derrière notre maison de parfumerie.  
+      Chaque fragrance est une œuvre d’art, un voyage sensoriel façonné avec élégance et audace.
+    </p>
+    <div class="mt-6">
+      <a href="#about"
+        class="px-6 py-2 border border-[#c9a35a] text-[#c9a35a] rounded-full text-xs md:text-sm tracking-widest hover:bg-[#c9a35a] hover:text-black transition-all duration-300">
+        En savoir plus
+      </a>
+    </div>
+  </div>
+</section>
+
+
+
     <!-- ABOUT -->
     <section id="about" class="py-20">
       <div class="container mx-auto px-6 container-lg">
@@ -372,8 +676,41 @@ header .container-lg {
         </div>
       </div>
     </section>
+    </main>
+    <main>
+<section id="composition" class="bg-black">
+    <div class="h-[300vh] relative"> 
+      
+      <div class="composition-notes">
+        
+        <img src="img/Застывшие фото _ Bleu de Chanel.jpg" alt="Perfume Bottle Shadow" class="absolute inset-0 w-full h-full object-cover opacity-[0.05] scale-150" id="compositionBg"/>
+        
+        <h2 id="compositionTitle" class="text-5xl font-bold text-center absolute top-20 opacity-0 transform translate-y-[-20px] tracking-wider">
+          
+        </h2>
 
-  </main>
+        <div id="note1" class="note-card glass" style="z-index: 30;">
+          <div class="text-sm uppercase tracking-widest text-gray-300 mb-2">Première Impression</div>
+          <h3 class="note-title font-bold">Bergamote</h3>
+          <p class="mt-4 text-gray-300 text-sm">Une explosion fraîche et vive, évoquant un matin Méditerranéen, prélude à la profondeur qui suit.</p>
+        </div>
+
+        <div id="note2" class="note-card glass" style="z-index: 20; transform: translateY(30px) scale(0.95);">
+          <div class="text-sm uppercase tracking-widest text-gray-300 mb-2">Le Coeur du Sillage</div>
+          <h3 class="note-title font-bold">Cuir Velouté</h3>
+          <p class="mt-4 text-gray-300 text-sm">Le caractère. Un accord riche et souple de Cuir et de Cardamome, pour une présence enveloppante et noble.</p>
+        </div>
+
+        <div id="note3" class="note-card glass" style="z-index: 10; transform: translateY(30px) scale(0.9);">
+          <div class="text-sm uppercase tracking-widest text-gray-300 mb-2">Mémoire Longue Durée</div>
+          <h3 class="note-title font-bold">Ambre Noir</h3>
+          <p class="mt-4 text-gray-300 text-sm">Un sillage persistant. Bois de Santal d'Australie et Ambre précieux, signant l'élégance pour la nuit entière.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>
 
   <!-- PRODUCT MODAL -->
   <div id="productModal" class="fixed inset-0 hidden items-center justify-center z-50 overlay">
@@ -394,6 +731,7 @@ header .container-lg {
       </div>
     </div>
   </div>
+
 
   <!-- FOOTER -->
   <footer class="mt-20 py-10">
@@ -462,6 +800,63 @@ header .container-lg {
       start: "top 80%"
     }
   });
+  gsap.to("#compositionBg", {
+    scale: 1, // Zoom into the background image as you scroll
+    opacity: 0.1,
+    scrollTrigger: {
+        trigger: "#composition",
+        start: "top top",
+        end: "bottom bottom",
+        scrub: true,
+    }
+});
+
+gsap.to("#compositionTitle", {
+    y: 0,
+    opacity: 1,
+    duration: 1,
+    ease: "power2.out",
+    scrollTrigger: {
+        trigger: "#composition",
+        start: "top 60%", // Start the title animation earlier
+    }
+});
+
+// Timeline for the Note 1 (Bergamote)
+const tl1 = gsap.timeline({
+    scrollTrigger: {
+        trigger: "#composition",
+        start: "top top", // Starts when section hits the top
+        end: "top -100%", // Ends after 100vh of scroll
+        scrub: 1, // Smoothly links animation to scroll
+    }
+});
+tl1.to("#note1", {opacity: 1, y: 0, scale: 1, duration: 1}, 0) // Fade in Note 1
+   .to("#note1", {opacity: 0, y: -30, scale: 0.9, duration: 1}, 1.5); // Fade out Note 1 after a pause
+
+// Timeline for the Note 2 (Cuir Velouté)
+const tl2 = gsap.timeline({
+    scrollTrigger: {
+        trigger: "#composition",
+        start: "top -100%", // Starts when the first TL ends
+        end: "top -200%", 
+        scrub: 1,
+    }
+});
+tl2.to("#note2", {opacity: 1, y: 0, scale: 1, duration: 1}, 0) // Fade in Note 2
+   .to("#note2", {opacity: 0, y: -30, scale: 0.9, duration: 1}, 1.5); // Fade out Note 2
+
+// Timeline for the Note 3 (Ambre Noir)
+const tl3 = gsap.timeline({
+    scrollTrigger: {
+        trigger: "#composition",
+        start: "top -200%", // Starts when the second TL ends
+        end: "bottom bottom", // Continues until the end of the section
+        scrub: 1,
+    }
+});
+tl3.to("#note3", {opacity: 1, y: 0, scale: 1, duration: 1}, 0); // Fade in Note 3
+// Note 3 stays visible until the next section scrolls up
 </script>
 
   <script>

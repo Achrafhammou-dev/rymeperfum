@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>RYMEperfum — L'essence de l'élégance</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
+</head> 
+
+<body>
+
+  <!-- audio (off) -->
+  <audio id="bgMusic" loop src="https://assets.mixkit.co/music/preview/mixkit-slow-piano-ballad-495.mp3"></audio>
+
+  <!-- NAV -->
+<header class="fixed top-4 left-0 right-0 z-50">
+  <div class="max-w-7xl mx-auto px-5">
+    <nav class="backdrop-blur-md bg-white/5 border border-white/10 px-5 py-3 rounded-2xl flex items-center justify-between shadow-lg">
+      
+      <!-- Logo + Tagline -->
+      <div class="flex items-center gap-3">
+        <button id="logoBtn" class="text-2xl md:text-3xl font-semibold text-white tracking-wide" href="index.html">
+          <span class="text-[#c8a85a]">RYME</span>perfum
+        </button>
+        <span class="hidden sm:block text-xs md:text-sm text-gray-300 italic">
+          L'essence d'un monde discret
+        </span>
+      </div>
+
+      <!-- Navigation -->
+      <div class="flex items-center gap-2 sm:gap-4">
+        <a href="#shop" class="text-xs sm:text-sm uppercase tracking-wide text-gray-300 hover:text-[#c8a85a] transition-all duration-200">
+          Boutique
+        </a>
+        <a href="#about" class="text-xs sm:text-sm uppercase tracking-wide text-gray-300 hover:text-[#c8a85a] transition-all duration-200">
+          À propos
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- 🌸 Luxury Hero Section -->
+<section class="relative bg-[url('img/banner.png')] bg-cover bg-center h-[100vh] flex items-end text-center text-white">
+  <!-- Dark overlay -->
+  <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/60 to-black/90"></div>
+
+  <!-- Content (moved lower) -->
+  <div class="relative z-10 w-full pb-24 md:pb-32 px-6">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-4xl md:text-6xl font-light mb-4 tracking-wide leading-tight">
+        Discover the Essence of Luxury
+      </h2>
+      <p class="text-base md:text-lg font-extralight mb-8 text-gray-200">
+        A fragrance that defines your elegance.
+      </p>
+      <button id="openPopup" class="bg-[#c8a85a] text-black px-10 py-3 rounded-full text-sm tracking-wider hover:bg-transparent hover:text-[#c8a85a] border border-[#c8a85a] transition-all duration-300">
+        Buy Now
+      </button>
+    </div>
+  </div>
+</section>
+
+  <main class="pt-28">
+
+    <!-- HERO -->
+    <section id="home" class="relative min-h-screen overflow-hidden">
+      <!-- decorative orbs -->
+      <div class="orb left-[-8%] top-6 w-72 h-72 bg-gradient-to-br from-[#2b3b4a] to-[#0f1724]" style="border-radius:50%; transform: rotate(12deg);"></div>
+      <div class="orb right-[-10%] top-36 w-96 h-96 bg-gradient-to-tr from-[#c9a35a] to-transparent" style="border-radius:50%; transform: rotate(-20deg);"></div>
+
+      <div class="hero-foreground container mx-auto px-6 container-lg py-24">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <!-- copy -->
+          <div class="max-w-xl">
+            <div class="uppercase text-sm tracking-widest text-gray-400">Nouvelle collection</div>
+            <h1 class="mt-4 text-4xl md:text-6xl font-bold leading-tight">RYMEperfum <span class="gold">•</span></h1>
+            <p class="mt-6 text-gray-300 text-lg">Un sillage qui évoque la mémoire d'un lieu lointain — matières nobles, résonance chaleureuse, élégance intemporelle.</p>
+
+            <div class="mt-8 flex gap-4">
+              <a href="#shop" class="inline-flex items-center px-6 py-3 bg-gradient-to-br from-[#0b1220] to-[#101826] border border-gray-700 text-white rounded-md shadow-lg transform hover:scale-[1.02] focus-ring">Découvrir la boutique</a>
+              <button id="previewBtn" class="px-6 py-3 border rounded-md text-sm text-gray-200 focus-ring">Voir le flacon</button>
+            </div>
+
+            <div class="mt-6 text-sm text-gray-400">Éditions limitées — flacons numérotés.</div>
+          </div>
+
+          <!-- visual -->
+          <div class="relative">
+            <div class="glass p-6 md:p-10">
+              <div class="relative md:flex md:items-center md:gap-8">
+                <div class="md:w-1/2">
+                  <!-- replace with your high-res asset -->
+                  <img id="bottle" src="img/téléchargement.jpg" alt="Flacon RYME" class="w-full h-80 md:h-96 rounded-xl shadow-2xl img-cover" />
+                  <div class="absolute left-6 bottom-6 px-3 py-1 rounded-full text-xs text-gray-200 bg-black/30">Edition 01 • 50ml</div>
+                </div>
+                <div class="md:w-1/2 mt-6 md:mt-0">
+                  <h3 class="text-2xl font-semibold">RYME Noir</h3>
+                  <p class="mt-3 text-gray-300">Un accord bois&eacute;-ambre, cuir velouté et épices nobles.</p>
+                  <div class="mt-6 flex items-center gap-4">
+                    <div class="text-2xl font-semibold">120€</div>
+                    <button id="buyBtn" class="px-5 py-2 rounded-md border bg-gradient-to-br from-[#0b1220] to-[#0f1724] text-white focus-ring">Acheter</button>
+                  </div>
+                  <div class="mt-3 text-sm text-gray-400">Livraison internationale • Retour 14 jours</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- floating note card -->
+            <div class="hidden lg:block absolute -right-8 top-8 w-48 glass p-4 transform -rotate-6">
+              <div class="text-sm text-gray-300">Note de tête</div>
+              <div class="mt-2 font-semibold">Bergamote & Poivre</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- thumbnails -->
+        <div class="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-6">
+          <div class="glass p-3">
+            <img src="img/Застывшие фото _ Bleu de Chanel.jpg" alt="" class="w-full h-28 rounded img-cover" />
+            <h4 class="mt-3 font-medium">Fleur d'Or</h4>
+            <div class="text-sm text-gray-400">95€</div>
+          </div>
+          <div class="glass p-3">
+            <img src="img/Foto Producto con IA.jpg" alt="" class="w-full h-28 rounded img-cover" />
+            <h4 class="mt-3 font-medium">Bois Secret</h4>
+            <div class="text-sm text-gray-400">110€</div>
+          </div>
+          <div class="glass p-3">
+            <img src="img/503062302_18353671492147847_7865410205981798880_n.jpg" alt="" class="w-full h-28 rounded img-cover" />
+            <h4 class="mt-3 font-medium">Citrus Lumière</h4>
+            <div class="text-sm text-gray-400">78€</div>
+          </div>
+          <div class="glass p-3">
+            <img src="img/18ab8307-052f-4622-8579-50b7263c6947.jpg" alt="" class="w-full h-28 rounded img-cover" />
+            <h4 class="mt-3 font-medium">Nocturne</h4>
+            <div class="text-sm text-gray-400">130€</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SHOP -->
+    <section id="shop" class="py-20">
+      <div class="container mx-auto px-6 container-lg">
+        <div class="flex items-center justify-between mb-8">
+          <div>
+            <h2 class="text-3xl font-bold">La Boutique</h2>
+            <p class="mt-2 text-gray-400">Sélection choisie — esthétique et personnalité.</p>
+          </div>
+          <div class="text-sm text-gray-400">Filtrer: <button class="px-3 py-1 border rounded">Nouveautés</button></div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- product 1 -->
+          <article class="glass p-6 product focus-ring" tabindex="0" data-id="1">
+            <div class="relative h-64 overflow-hidden rounded">
+              <img src="img/18ab8307-052f-4622-8579-50b7263c6947.jpg" alt="RYME Noir" class="w-full h-full img-cover" />
+            </div>
+            <h3 class="mt-4 text-xl font-semibold">RYME Noir</h3>
+            <p class="mt-2 text-gray-400 text-sm">Signature boisée, cuir et ambre.</p>
+            <div class="mt-4 flex items-center justify-between">
+              <div class="text-lg font-semibold">120€</div>
+              <button class="px-4 py-2 border rounded show-popup">Voir</button>
+            </div>
+          </article>
+
+          <!-- product 2 -->
+          <article class="glass p-6">
+            <div class="relative h-64 overflow-hidden rounded">
+              <img src="img/503062302_18353671492147847_7865410205981798880_n.jpg" alt="Fleur d'Or" class="w-full h-full img-cover" />
+            </div>
+            <h3 class="mt-4 text-xl font-semibold">Fleur d'Or</h3>
+            <p class="mt-2 text-gray-400 text-sm">Rose ambrée, soyeuse.</p>
+            <div class="mt-4 flex items-center justify-between">
+              <div class="text-lg font-semibold">95€</div>
+              <button class="px-4 py-2 border rounded">Voir</button>
+            </div>
+          </article>
+
+          <!-- product 3 -->
+          <article class="glass p-6">
+            <div class="relative h-64 overflow-hidden rounded">
+              <img src="img/Foto Producto con IA.jpg" alt="Citrus Lumiere" class="w-full h-full img-cover" />
+            </div>
+            <h3 class="mt-4 text-xl font-semibold">Citrus Lumière</h3>
+            <p class="mt-2 text-gray-400 text-sm">Zest & soie florale.</p>
+            <div class="mt-4 flex items-center justify-between">
+              <div class="text-lg font-semibold">78€</div>
+              <button class="px-4 py-2 border rounded">Voir</button>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="py-20">
+      <div class="container mx-auto px-6 container-lg">
+        <div class="grid md:grid-cols-2 gap-8 items-center">
+          <div>
+            <h2 class="text-3xl font-bold">La Maison RYME</h2>
+            <p class="mt-4 text-gray-300">Maître nez et designers s'unissent pour extraire l'essence la plus pure. Matières nobles, distillation artisanale, esthétisme minimaliste.</p>
+
+            <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="glass p-4">
+                <div class="font-semibold">Artisanat</div>
+                <div class="text-sm text-gray-400 mt-1">Distillation lente, flacons soufflés.</div>
+              </div>
+              <div class="glass p-4">
+                <div class="font-semibold">Durabilité</div>
+                <div class="text-sm text-gray-400 mt-1">Ingrédients sourcés de façon responsable.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass p-6">
+            <h3 class="text-xl font-semibold">Atelier & Collections</h3>
+            <p class="mt-3 text-gray-300">Éditions limitées, collaborations avec artistes et designers. Chaque flacon est pensé comme un objet.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- PRODUCT MODAL -->
+  <div id="productModal" class="fixed inset-0 hidden items-center justify-center z-50 overlay">
+    <div class="max-w-4xl w-full mx-4 lg:mx-0 p-6">
+      <div class="glass md:flex overflow-hidden rounded-2xl">
+        <div class="md:w-1/2 relative h-60 md:h-auto">
+          <img id="modalImg" src="img/Застывшие фото _ Bleu de Chanel.jpg" alt="Produit" class="w-full h-full img-cover" />
+        </div>
+        <div class="p-6 md:w-1/2">
+          <button id="closeModal" class="absolute right-8 top-8 text-gray-300">✕</button>
+          <h3 id="modalTitle" class="text-2xl font-bold">Produit</h3>
+          <p id="modalDesc" class="mt-4 text-gray-300">Description du produit.</p>
+          <div class="mt-6 flex items-center gap-6">
+            <div id="modalPrice" class="text-2xl font-semibold">120€</div>
+            <button id="modalBuy" class="px-5 py-2 rounded-md border bg-gradient-to-br from-[#0b1220] to-[#0f1724] text-white">Ajouter au panier</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="mt-20 py-10">
+    <div class="container mx-auto px-6 text-center text-gray-400">© RYMEperfum — Tous droits réservés</div>
+  </footer>
+
+
+
+  <!-- 🛍 Product Purchase Popup -->
+<div id="productPopup" class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50">
+  <div class="bg-white rounded-2xl w-[90%] max-w-md p-6 relative text-gray-800">
+    <button id="closePopup" class="absolute top-3 right-3 text-gray-500 hover:text-black text-xl">&times;</button>
+    <h3 class="text-2xl font-semibold mb-2 text-center">Buy RYMEperfum</h3>
+    <p class="text-center text-gray-500 mb-6">Choose your fragrance and place your order</p>
+
+    <form class="space-y-4">
+      <div>
+        <label class="block text-sm font-medium mb-1">Select perfume</label>
+        <select class="w-full border border-gray-300 rounded-lg p-2">
+          <option>RYMEperfum - Rose Velvet</option>
+          <option>RYMEperfum - Oud Elegance</option>
+          <option>RYMEperfum - Amber Noir</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium mb-1">Quantity</label>
+        <input type="number" class="w-full border border-gray-300 rounded-lg p-2" min="1" value="1">
+      </div>
+
+      <button type="submit" class="w-full bg-black text-white py-2 rounded-lg hover:bg-gray-800 transition-all duration-300">
+        Confirm Purchase
+      </button>
+    </form>
+  </div>
+</div>
+
+</body>
+</html>
