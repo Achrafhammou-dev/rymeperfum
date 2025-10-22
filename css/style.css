@@ -412,6 +412,10 @@ footer a:hover {
 
 /* Responsive */
 @media (max-width: 991.98px) {
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
 
     .hero {
         background: url('../img/rmprfm.png') no-repeat center center;
