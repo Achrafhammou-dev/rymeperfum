@@ -47,7 +47,7 @@ a:hover {
 .navbar {
     background-color: rgba(0, 0, 0, 0.7);
     transition: var(--transition);
-    padding: 15px 0;
+    padding: -1px 0;
 }
 
 .navbar.scrolled {
@@ -57,7 +57,7 @@ a:hover {
 
 .brand-name {
     font-family: 'Playfair Display', serif;
-    font-size: 1.8rem;
+    font-size: 1rem;
     font-weight: 700;
     letter-spacing: 1px;
 }
@@ -106,7 +106,7 @@ a:hover {
 /* Hero Section */
 .hero {
     height: 100vh;
-    background: url('../img/EnergiticRyme.png') no-repeat center center;
+    background: url('../img/rmprfm.png') no-repeat center center;
     background-size: cover;
     position: relative;
     display: flex;
@@ -412,8 +412,17 @@ footer a:hover {
 
 /* Responsive */
 @media (max-width: 991.98px) {
+.fixed-top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 70%;
+    z-index: 1030;
+}
+
     .hero {
-        background: url('../img/EnergiticRymemob.png') no-repeat center center;
+        background: url('../img/rmprfm.png') no-repeat center center;
         height: 100vh;
     }
 }

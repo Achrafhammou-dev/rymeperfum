@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Update cart modal content
         if (cart.length === 0) {
             cartItems.innerHTML = '<p class="text-center empty-cart-message">Your cart is empty</p>';
-            cartTotal.textContent = '$0';
+            cartTotal.textContent = 'mad 0';
         } else {
             let cartHTML = '';
             let total = 0;
@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         </div>
                         <div class="cart-item-details">
                             <div class="cart-item-name">${item.name}</div>
-                            <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+                            <div class="cart-item-price">Mad ${item.price.toFixed(2)}</div>
                         </div>
                         <div class="cart-item-quantity">
                             <span class="quantity-btn decrease">-</span>
@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
             
             cartItems.innerHTML = cartHTML;
-            cartTotal.textContent = `$${total.toFixed(2)}`;
+            cartTotal.textContent = `Mad ${total.toFixed(2)}`;
             
             // Add event listeners for quantity buttons
             document.querySelectorAll('.increase').forEach(button => {
@@ -357,7 +357,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <h4>${product.name}</h4>
                                 <p class="product-desc">${product.desc}</p>
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <span class="product-price">$${product.price}</span>
+                                    <span class="product-price">Mad ${product.price}</span>
                                     <button class="btn btn-sm btn-primary collection-add-to-cart" 
                                         data-id="${product.id}" 
                                         data-name="${product.name}" 
